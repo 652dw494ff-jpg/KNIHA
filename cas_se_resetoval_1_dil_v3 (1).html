@@ -1,0 +1,79 @@
+<!doctype html><html lang='cs'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>ČAS SE RESETOVAL — 1. díl</title><style>
+:root{--bg:#08090d;--surface:#11141d;--surface2:#191d29;--text:#f1f2f6;--muted:#9ba2b3;--line:#2a3041;--accent:#9e8cff;--accent2:#7161c9;--danger:#d44a59;--story-size:20px;--shadow:0 22px 70px rgba(0,0,0,.38)}
+body.light{--bg:#f2f3f7;--surface:#fff;--surface2:#eef0f5;--text:#171922;--muted:#626978;--line:#d9dce5;--accent:#5948b5;--accent2:#7462d8;--danger:#b72d3d;--shadow:0 18px 55px rgba(30,35,55,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% -10%,rgba(113,97,201,.2),transparent 34%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:.25s}
+.topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:color-mix(in srgb,var(--bg) 86%,transparent);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1050px;margin:auto;padding:11px 17px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-weight:900;letter-spacing:.06em;font-size:.9rem}.tools{display:flex;gap:6px;flex-wrap:wrap}
+button{font:inherit}.tool,.action,.toc button{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:11px;padding:9px 12px;font-weight:750;cursor:pointer;transition:.18s}
+.tool:hover,.action:hover,.toc button:hover{transform:translateY(-1px);filter:brightness(1.06)}
+main{max-width:1050px;margin:auto;padding:22px 17px 65px}
+.page{min-height:82vh;display:flex;flex-direction:column;justify-content:center;background:var(--surface);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:clamp(28px,6vw,58px);margin-bottom:22px}
+.cover{text-align:center;position:relative;overflow:hidden}.cover:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 38%,rgba(158,140,255,.18),transparent 28%),linear-gradient(135deg,transparent 60%,rgba(212,74,89,.07))}
+.cover>*{position:relative}.badge{color:var(--accent);letter-spacing:.2em;text-transform:uppercase;font-size:.78rem;font-weight:800}
+.cover h1{font-size:clamp(3.2rem,11vw,7.2rem);line-height:.86;margin:18px 0;letter-spacing:-.075em}.sub{color:var(--muted);font-size:1.08rem;max-width:650px;margin:auto;line-height:1.7}
+.author-box{margin:32px auto 0;padding:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:620px}.author-box b{display:block;margin-bottom:6px}
+.center{text-align:center}.page h2{font-size:clamp(2.2rem,5vw,3.4rem);margin:0 0 10px;letter-spacing:-.04em}.lead{color:var(--muted);line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:25px}.character{padding:18px;border:1px solid var(--line);background:var(--surface2);border-radius:17px}
+.avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--accent2);color:#fff;font-weight:900;margin-bottom:11px}.character h3{margin:0 0 6px}.character p{margin:0;color:var(--muted);line-height:1.6}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:22px}.toc button{text-align:left;padding:16px}.toc small{display:block;color:var(--muted);margin-top:3px}
+.chapter-page{justify-content:flex-start}.chapter-head{margin-bottom:25px}.label{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem}.title{font-size:clamp(2.2rem,5vw,3.5rem);margin:8px 0 0}
+.story{font:var(--story-size)/1.9 Georgia,"Times New Roman",serif;max-width:780px;margin:0 auto;width:100%}.story p{margin:0 0 1.1em}.story .q{border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);padding:11px 16px;border-radius:0 12px 12px 0;font-weight:700}.story .sound{text-align:center;font-family:system-ui,sans-serif;font-weight:900;letter-spacing:.13em;color:var(--danger)}.story .end{text-align:center;font-family:system-ui,sans-serif;font-weight:950;letter-spacing:.1em;margin-top:35px}
+.chapter-nav{display:flex;gap:10px;align-items:center;margin-top:35px}.chapter-nav .action{flex:1}.progress{flex:2;text-align:center;color:var(--muted);font-size:.82rem}.bar{height:5px;background:var(--line);border-radius:99px;margin-top:7px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));transition:.3s}
+.primary{background:var(--accent2)!important;color:#fff!important;border-color:var(--accent2)!important}.thanks{text-align:center;min-height:70vh}.thanks h2{font-size:clamp(2.5rem,7vw,5rem);margin:15px 0}.footer{text-align:center;color:var(--muted);font-size:.78rem;padding:10px 0 25px}
+@media(max-width:650px){.topbar-inner{align-items:flex-start;flex-direction:column}.tools{width:100%}.tool{flex:1}.chapter-nav{flex-wrap:wrap}.progress{order:-1;flex-basis:100%}.chapter-nav .action{min-width:40%}}
+</style></head><body>
+<div class="topbar"><div class="topbar-inner">
+<div class="brand">ČAS SE RESETOVAL · 1. DÍL</div>
+<div class="tools"><button class="tool" id="theme">☀️ / 🌙 Režim</button><button class="tool" onclick="font(-1)">A−</button><button class="tool" onclick="font(1)">A+</button><button class="tool" onclick="font(0)">A Reset</button></div>
+</div></div>
+<main>
+<section class="page cover" id="cover"><div class="badge">1. díl · Teen horror</div><h1>ČAS SE<br>RESETOVAL</h1><p class="sub">Čtyři kamarádi. Opuštěný dům. Jedna noc, na kterou nikdo z nich nezapomene.</p><div class="author-box"><b>ČAS SE RESETOVAL</b>1. díl</div><button class="action primary" onclick="page('author')">Otevřít knihu →</button></section>
+
+<section class="page center" id="author"><div class="badge">Stránka 2</div><h2>Kdo knihu napsal?</h2><p class="lead">Tento příběh vznikl společně.</p><div class="author-box"><b>Autor</b>Ty</div><div class="author-box"><b>Spoluautor</b>ChatGPT</div><p class="lead">Nápady, postavy a směr příběhu vznikaly společně během našeho psaní.</p><button class="action primary" onclick="page('characters')">Další stránka →</button></section>
+
+<section class="page" id="characters"><div class="badge">Stránka 3</div><h2>Postavy</h2><p class="lead">Čtyři nejlepší kamarádi — a RÍŠA, který se do příběhu přidá za podivných okolností.</p>
+<div class="grid">
+<div class="character"><div class="avatar">P</div><h3>Patrik</h3><p>Hlavní protagonista. Přemýšlivý a pozorný, ale pořád normální kluk. Někdy až moc přemýšlí.</p></div>
+<div class="character"><div class="avatar">V</div><h3>Vojta</h3><p>Největší vtipálek. Snaží se ostatní rozesmát i ve chvíli, kdy uvnitř vůbec neví, co se děje.</p></div>
+<div class="character"><div class="avatar">A</div><h3>Adam</h3><p>Sebevědomý a odvážný. I když je situace divná, pořád věří, že ji zvládnou.</p></div>
+<div class="character"><div class="avatar">L</div><h3>Lukáš</h3><p>Tichý a tajemný. Mluví málo, takže ostatní nikdy úplně neví, co si myslí.</p></div>
+<div class="character"><div class="avatar">R</div><h3>RÍŠA</h3><p>Objeví se na konci 1. dílu. Do domu ho přivedla zvláštní zpráva v telefonu.</p></div>
+</div><button class="action primary" style="margin-top:25px" onclick="page('contents')">Další stránka →</button></section>
+
+<section class="page" id="contents"><div class="badge">Stránka 4</div><h2>Obsah</h2><p class="lead">Každá kapitola má vlastní stránku.</p><div id="toc" class="toc"></div></section>
+<div id="chapters"></div>
+
+<section class="page thanks center" id="thanks"><div><div class="badge">Poslední stránka</div><h2>Děkujeme, že jste četli. ❤️</h2><p class="lead">Tímhle příběh nekončí.<br><strong>Pokračování příště.</strong></p><button class="action primary" onclick="page('cover')">↺ Zpět na začátek</button></div></section>
+<div class="footer">ČAS SE RESETOVAL · 1. díl</div>
+</main>
+<script>
+const c=[
+['Kapitola 1','Obyčejný den',`<p>Bylo úterý.</p><p>Na Základní škole Chvaltice se nedělo nic zvláštního. Chodby byly plné lidí, někdo běžel na poslední chvíli do třídy a ze sborovny se ozýval učitel.</p><p>Patrik seděl ve třídě a koukal z okna. Za městem začínal les, který Chvaltice obklopoval skoro ze všech stran.</p><p>Vedle něj seděl Vojta.</p><div class="q">„Ty vole, dneska je to fakt nuda.“</div><p>„Je úterý.“</p><p>„No právě.“</p><p>Vojta se otočil na Adama. „Po škole někam jdem.“</p><p>„Kam?“</p><p>„Nevím.“</p><p>„Tak to je skvělej plán.“</p><p>O pár lavic dál seděl Lukáš. Jako obvykle moc nemluvil.</p><p>Byl to normální den.</p><p>A právě proto si nikdo z nich nevšiml, že u okna na chodbě stojí někdo, kdo se dívá přímo na ně.</p>`],
+['Kapitola 2','Dům v lese',`<p>Po škole se všichni čtyři sešli před budovou.</p><p>„Co takhle ten barák v lese?“ navrhl Vojta.</p><p>„Ten opuštěnej?“</p><p>„Jo. Protože se nudíme.“</p><p>O dvacet minut později šli po zarostlé cestě hluboko do lesa.</p><p>Před nimi se objevil starý dům. Okna byla špinavá, omítka popraskaná a vchod zarostlý.</p><p>A přesto v jednom z oken svítilo světlo.</p><p>„Takže… někdo tam asi bydlí,“ řekl Vojta.</p><p>„Tak jdeme domů,“ řekl Patrik.</p><p>„Ale hovno.“</p><p>Vešli dovnitř.</p>`],
+['Kapitola 3','Schovejte se',`<p>Dveře za nimi prudce zapadly.</p><div class="sound">PRÁSK.</div><p>Adam vzal za kliku. Nešlo s ní pohnout.</p><p>Najednou zavibrovaly všechny čtyři telefony.</p><div class="sound">CINK.</div><div class="q">„Jdu po vás. Schovejte se. Ahahaahaaa.“</div><p>„Někdo nás trollí,“ řekl Vojta.</p><p>Patrik číslo vytočil. Ozvalo se: <b>Číslo neexistuje.</b></p><p>Vtom se z horního patra ozvaly kroky.</p><div class="sound">Krok. Krok. Krok.</div><p>Vojta chtěl něco říct, ale jeho telefon najednou začal mluvit.</p><div class="q">„Sranda to může být… ale ne dlouho.“</div><p>Všichni ztichli.</p>`],
+['Kapitola 4','Jeden z vás',`<p>Na konci chodby ležel telefon. Zvonil.</p><p>Vojta ho zvedl.</p><p>Ozval se Patrikův hlas. Přesně jeho hlas.</p><div class="q">„Jeden z vás není skutečný.“</div><p>Vojta pomalu položil telefon. Podíval se na Patrika, Adama a nakonec na Lukáše.</p><div class="q">„Tak jo. Tohle už není normální.“</div>`],
+['Kapitola 5','Patrik',`<p>Dveře byly stále zamčené. Na nich byl přilepený papír:</p><div class="q">JEŠTĚ NE.</div><p>Všichni vběhli do místnosti a zamkli dveře.</p><p>Kroky se zastavily přímo před nimi.</p><div class="sound">Ťuk. Ťuk. Ťuk.</div><div class="q">„Otevřete.“</div><p>Patrik ztuhl. Byl to jeho hlas.</p><div class="q">„To jsem nebyl já.“</div><p>Hlas řekl ještě něco z Patrikovy školní minulosti. Něco, co mohl vědět jen on.</p><p>Patrik si vzpomněl na papírek ze své lavice:</p><div class="q">VÍM, CO DĚLÁŠ.</div>`],
+['Kapitola 6','Fotografie',`<p>Na chodbě se na okamžik objevila postava. Mrknul. Byla pryč.</p><div class="q">PATRIKU, TY UŽ TO VÍŠ.</div><p>„Nevím. Fakt nevím.“</p><p>Patrik s Vojtou šli nahoru. Na dveřích byla zpráva:</p><div class="q">POŘÁD SE SMĚJEŠ?</div><p>„Okay… tohle už není vtipný,“ řekl Vojta.</p><p>Uvnitř byly staré věci, stůl a fotografie.</p><p>Na fotografiích byli všichni čtyři před školou toho rána — ještě předtím, než se rozhodli jít do domu.</p><p>Na jedné v pozadí stála postava u okna školy a někdo je fotil.</p><p>„Někdo nás sledoval už ráno,“ řekl Patrik.</p><div class="q">VE 22:00 SE VŠECHNO ZMĚNÍ.</div><p>Hodiny ukazovaly <b>21:21.</b></p>`],
+['Kapitola 7','Autobus',`<p>Adam s Lukášem našli starý klíč a papír:</p><div class="q">VE 22:00 SI VYBERU JEDNOHO Z VÁS.</div><p>Patrik si klíč schoval. Pod schody si všimli malých dveří, ale zatím je nechali být.</p><p>Ve 21:30 dali všechny důkazy dohromady.</p><p>Patrik si vzpomněl na stejný autobus, který viděl u svého domu.</p><p>Do telefonu zadal údaje o vozidle.</p><div class="q">DPCH – Dopravní podnik Chvaltice.</div><p>Vojta ukázal na fotografii: stejný autobus stál před školou.</p><p>Patrik otevřel jízdní záznamy. Autobus byl normálně v provozu, měl přiděleného řidiče a jel podle běžné trasy.</p><div class="q">„Tak proč byl u mě doma?“</div>`],
+['Kapitola 8','Ty',`<p>Bylo 21:50.</p><p>„Máme deset minut.“</p><p>Všem čtyřem se najednou rozsvítily telefony. Přišla zpráva.</p><p>Byla od tebe.</p><p>Vzápětí všechny telefony zhasly.</p><div class="sound">0 %.</div><p>Pak se z chodby ozvaly kroky.</p><div class="sound">Krok. Krok. Krok.</div><p>Kroky došly až před dveře.</p><p>Kliknutí.</p><p>Dveře se pomalu otevřely.</p><p>A ve dveřích stál RÍŠA <b>ty</b>.</p><p>Všichni jen koukali.</p><div class="q">„Co tady děláš?“</div><p>„Někdo mi poslal zprávu.“</p><div class="q">PŘIJĎ DNES VE 21:30 K DOMU V LESE. NIKOMU TO NEŘÍKEJ.</div><p>Adam se zamračil. „Takže někdo věděl, že sem přijdeš?“</p><p>Patrik se podíval na ostatní. „A kdo ti to poslal?“</p><p>Nikdo neznal odpověď.</p>`],
+['Kapitola 9','22:00',`<p>Všichni nakonec odešli z domu.</p><p>Šli směrem k městu. Nikdo moc nemluvil.</p><p>Dům za nimi zmizel mezi stromy. Patrik se ještě jednou otočil. V jednom z horních oken svítilo světlo.</p><p>Pak zhaslo.</p><p>Když se blížili k městu, jednomu z nich zavibroval telefon.</p><p>Jenže telefony přece byly vybité.</p><div class="q">ČAS SE RESETOVAL.</div><p>O několik sekund později přišla druhá zpráva.</p><div class="q">POKRAČOVÁNÍ PŘÍŠTĚ.</div><p>Patrik se zastavil. Podíval se na ostatní.</p><p>Nikdo nic neřekl.</p><p>A někde daleko za nimi se v lese znovu rozsvítilo světlo.</p><div class="end">KONEC 1. DÍLU</div>`]
+];
+let size=parseInt(localStorage.getItem('book-font'))||20;
+document.documentElement.style.setProperty('--story-size',size+'px');
+if(localStorage.getItem('book-theme')==='light')document.body.classList.add('light');
+function page(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function font(d){if(d===0)size=20;else size=Math.max(16,Math.min(28,size+d*2));document.documentElement.style.setProperty('--story-size',size+'px');localStorage.setItem('book-font',size)}
+document.getElementById('theme').onclick=()=>{document.body.classList.toggle('light');localStorage.setItem('book-theme',document.body.classList.contains('light')?'light':'dark')};
+
+const wrap=document.getElementById('chapters'),toc=document.getElementById('toc');
+c.forEach((x,i)=>{
+ const sec=document.createElement('section');
+ sec.className='page chapter-page'; sec.id='kap'+(i+1);
+ const prev=i===0?'contents':'kap'+i, next=i===c.length-1?'thanks':'kap'+(i+2);
+ sec.innerHTML=`<div class="chapter-head"><div class="label">${x[0]}</div><h2 class="title">${x[1]}</h2></div><article class="story">${x[2]}</article><div class="chapter-nav"><button class="action" onclick="page('${prev}')">← Zpět</button><div class="progress">${i+1} / ${c.length}<div class="bar"><i style="width:${((i+1)/c.length)*100}%"></i></div></div><button class="action primary" onclick="page('${next}')">${i===c.length-1?'Děkujeme →':'Další →'}</button></div>`;
+ wrap.appendChild(sec);
+ const b=document.createElement('button');b.innerHTML=`<strong>${i+1}. ${x[1]}</strong><small>${x[0]}</small>`;b.onclick=()=>page('kap'+(i+1));toc.appendChild(b);
+});
+</script></body></html>
